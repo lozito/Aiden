@@ -8,9 +8,11 @@ public class MessageListener extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String message = event.getMessage().getContentRaw();
         String name = event.getMember().getUser().getName();
+        if (event.getAuthor().isBot()) return;
         if (message.contains("hola")) {
-            event.getChannel().sendMessage("Hola "+ name + "!").queue();
+            event.getChannel().sendMessage("Hola " + name + "!").queue();
         }
     }
+
 
 }
