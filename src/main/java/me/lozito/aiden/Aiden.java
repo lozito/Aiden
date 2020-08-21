@@ -1,8 +1,7 @@
 package me.lozito.aiden;
 
-import me.lozito.aiden.listener.MessageListener;
-import me.lozito.aiden.listener.ReadyListener;
-import me.lozito.aiden.listener.TextToSpeechListener;
+import me.lozito.aiden.command.CalculateCommand;
+import me.lozito.aiden.listener.*;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
@@ -16,6 +15,11 @@ public class Aiden {
         aiden.awaitReady();
         aiden.getPresence().setActivity(Activity.streaming("sentimientos", "https://twitch.tv/EasterEggs"));
 
+        aiden.addEventListener(new CalculateCommand());
+        aiden.addEventListener(new OnlineListener());
+        aiden.addEventListener(new BanListener());
+        aiden.addEventListener(new ReactionListener());
+        aiden.addEventListener(new DisconnectListener());
         aiden.addEventListener(new MessageListener());
         aiden.addEventListener(new ReadyListener());
         aiden.addEventListener(new TextToSpeechListener());
