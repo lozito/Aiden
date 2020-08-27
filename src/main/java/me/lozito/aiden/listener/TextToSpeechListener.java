@@ -8,7 +8,8 @@ public class TextToSpeechListener extends ListenerAdapter {
     @Override
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         if (event.getMessage().isTTS()) {
-            event.getChannel().sendMessage("El último mensaje fue de tipo TTS.").queue();
+            event.getMessage().delete().queue();
+            event.getChannel().sendMessage("El último mensaje fue de tipo TTS, pero me encargué de borrarlo.").queue();
         }
     }
 }

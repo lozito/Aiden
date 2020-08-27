@@ -26,6 +26,11 @@
             <artifactId>JDA</artifactId>
             <version>4.2.0_194</version>
         </dependency>
+        <dependency>
+            <groupId>org.openhab.voice</groupId>
+            <artifactId>org.openhab.voice.voicerss</artifactId>
+            <version>2.1.0</version>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>
@@ -34,6 +39,5 @@
             <url>https://jcenter.bintray.com</url>
         </repository>
     </repositories>
-
 
 </project>

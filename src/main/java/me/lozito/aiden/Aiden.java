@@ -16,9 +16,11 @@ public class Aiden {
         aiden.getPresence().setActivity(Activity.streaming("sentimientos", "https://twitch.tv/EasterEggs"));
 
         aiden.addEventListener(new CalculateCommand());
-        aiden.addEventListener(new OnlineListener());
+        aiden.addEventListener(new MuteListener());
         aiden.addEventListener(new BanListener());
         aiden.addEventListener(new ReactionListener());
+        aiden.addEventListener(new ChannelListener());
+        aiden.addEventListener(new JoinChannelListener());
         aiden.addEventListener(new DisconnectListener());
         aiden.addEventListener(new MessageListener());
         aiden.addEventListener(new ReadyListener());

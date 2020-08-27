@@ -7,8 +7,6 @@ public class BanListener extends ListenerAdapter {
 
     public void onGuildBan(GuildBanEvent event) {
         String user = event.getUser().getName();
-
         event.getGuild().getSystemChannel().sendMessage("A casa puta " + user).queue();
     }
-
 }
