@@ -7,7 +7,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 public class MuteListener extends ListenerAdapter {
 
-    public void onGuildVoiceSelfMute(GuildVoiceSelfMuteEvent event) {
+    public void onGuildVoiceSelfMute(GuildVoiceSelfMuteEvent event) throws NullPointerException {
         User user = event.getMember().getUser();
         Role role = event.getGuild().getRoleById("746916830584635434");
         if (event.getGuild().getMember(user).getRoles().contains(role)) return;

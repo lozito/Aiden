@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class MessageListener extends ListenerAdapter {
 
-    public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
+    public void onGuildMessageReceived(GuildMessageReceivedEvent event) throws NullPointerException {
         if (event.getAuthor().isBot()) return;
 
         Random random = new Random();
@@ -34,6 +34,13 @@ public class MessageListener extends ListenerAdapter {
             String[] messages = {"soy admin y confirmo lo de arriba", "confirmo", "desconfirmo", "le pifiaste mi rey"};
             int randomId = random.nextInt(messages.length);
             event.getChannel().sendMessage(messages[randomId]).queue();
+        }
+        if (event.getMessage().getAuthor().getName().contains("Frety")) {
+            event.getMessage().delete().queue();
+        }
+        if (event.getMessage().getContentRaw().equalsIgnoreCase("!test")) {
+            event.getMessage().delete().queue();
+            event.getChannel().sendMessage("<@176425702097289226> <@176425702097289226>").queue();
         }
     }
 

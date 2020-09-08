@@ -6,7 +6,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 public class ReactionListener extends ListenerAdapter {
 
-    public void onGuildMessageReactionAdd(GuildMessageReactionAddEvent event) {
+    public void onGuildMessageReactionAdd(GuildMessageReactionAddEvent event) throws NullPointerException {
         if (!event.getUser().isBot()) {
             event.getReaction().removeReaction(event.getUser()).queue();
             Role role = event.getGuild().getRoleById("746916830584635434");

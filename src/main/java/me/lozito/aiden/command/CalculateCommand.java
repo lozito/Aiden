@@ -3,11 +3,16 @@ package me.lozito.aiden.command;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.guild.react.GuildMessageReactionAddEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CalculateCommand extends ListenerAdapter {
+
+    Map<Long, Long> prompts = new HashMap<>();
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split(" ");
@@ -15,24 +20,32 @@ public class CalculateCommand extends ListenerAdapter {
             EmbedBuilder builder = new EmbedBuilder();
             builder.setAuthor("Aiden's Calculator", null, "https://vignette.wikia.nocookie.net/beyondtwosouls/images/4/41/Aiden.png/revision/latest/top-crop/width/360/height/450?cb=20140831005218");
             builder.setColor(Color.PINK);
-            builder.addField("¿Que operación querés realizar?", "WORK IN PROGRESS, USE FOR TESTING ONLY", false);
+            builder.addField("¿Qué operación querés realizar?", "WORK IN PROGRESS, USE FOR TESTING ONLY", false);
             builder.setFooter("made by juvn with ♥");
             Message message = event.getChannel().sendMessage(builder.build()).complete();
-            message.addReaction("➕").queue();
-            message.addReaction("➖").queue();
-            message.addReaction("✖").queue();
-            message.addReaction("➗").queue();
+            message.addReaction("U+2795").queue();
+            message.addReaction("U+2796").queue();
+            message.addReaction("U+2716").queue();
+            message.addReaction("U+2797").queue();
+        }
+    }
 
-            String reaction = event.getMessage().getReactionByUnicode("").getEmoji();
-
-            /*switch (reaction) {
-                case "➕": {
-                    event.getChannel().sendMessage("Escribe 2 números.").queue();
-                    int num1 = Integer.parseInt(args[1]);
-                    int num2 = Integer.parseInt(args[2]);
-                    event.getChannel().sendMessage("El resultado es " + (num1 + num2)).queue();
-                }
-            }*/
+    public void onGuildMessageReactionAdd(GuildMessageReactionAddEvent event) {
+        String reaction = event.getReactionEmote().getName();
+        switch (reaction) {
+            case "➕": {
+                prompts.put(event.getUser().getIdLong(), System.currentTimeMillis());
+                event.getChannel().sendMessage("A").queue();
+            }
+            case "➖": {
+                event.getChannel().sendMessage("B").queue();
+            }
+            case "✖": {
+                event.getChannel().sendMessage("C").queue();
+            }
+            case "➗": {
+                event.getChannel().sendMessage("D").queue();
+            }
         }
     }
 }

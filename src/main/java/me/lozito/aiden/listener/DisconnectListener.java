@@ -5,7 +5,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 public class DisconnectListener extends ListenerAdapter {
 
-    public void onGuildVoiceLeave(GuildVoiceLeaveEvent event) {
+    public void onGuildVoiceLeave(GuildVoiceLeaveEvent event) throws NullPointerException {
         String user = event.getEntity().getUser().getName();
         event.getGuild().getSystemChannel().sendMessage("Te falta calle " + user + "!").queue();
 

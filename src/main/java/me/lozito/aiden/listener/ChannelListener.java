@@ -5,7 +5,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 public class ChannelListener extends ListenerAdapter {
 
-    public void onGuildVoiceMove(GuildVoiceMoveEvent event) {
+    public void onGuildVoiceMove(GuildVoiceMoveEvent event) throws NullPointerException {
         String channel = event.getChannelJoined().getId();
         String user = event.getMember().getUser().getName();
         if (channel.contains("747589594911998085")) {
