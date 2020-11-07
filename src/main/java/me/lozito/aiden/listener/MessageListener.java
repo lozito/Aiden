@@ -20,7 +20,7 @@ public class MessageListener extends ListenerAdapter {
         if (event.getMessage().getContentRaw().equalsIgnoreCase("react me")) {
             event.getMessage().addReaction("\uD83E\uDD2A").queue();
         }
-        if (message[0].equalsIgnoreCase("!love")) {
+        if (message[0].equalsIgnoreCase("$love")) {
             if (message[1] == null || message[2] == null)
                 event.getChannel().sendMessage("Tenes que colocar como maximo 2 personas!").queue();
             EmbedBuilder builder = new EmbedBuilder();
@@ -35,25 +35,29 @@ public class MessageListener extends ListenerAdapter {
             int randomId = random.nextInt(messages.length);
             event.getChannel().sendMessage(messages[randomId]).queue();
         }
-        if (event.getMessage().getAuthor().getName().contains("Frety")) {
-            event.getMessage().delete().queue();
-        }
-        if (event.getMessage().getContentRaw().equalsIgnoreCase("!test")) {
+        if (event.getMessage().getContentRaw().equalsIgnoreCase("$xd")) {
             event.getMessage().delete().queue();
             event.getChannel().sendMessage("<@176425702097289226> <@176425702097289226>").queue();
+        }
+        if (event.getMessage().getContentRaw().equalsIgnoreCase("$online") && event.getAuthor().getName().contains("la concha de tu prima")) {
+            System.out.println(event.getGuild().getMembers());
         }
     }
 
     public void onPrivateMessageReceived(PrivateMessageReceivedEvent event) {
         String[] messages = {"que te pasa pelotudito", "como te va, todo bien?", "la concha bien puta de tu madre",
                 "perdon no entiendo mogolicos", "tu novia trola con mi pingo se ahoga", "hola", "que nombre de mierda " +
-                "que tenes", "oye we vamos por unas chelas", "https://www.pornhub.com/model/mini-diva", "iban 2 " +
+                "que tenes", "oye we vamos por unas chelas", "i still miss you :(", "iban 2 " +
                 "mogolicos en una moto y uno eras vos", "ESTOY LOL JAJA CRAZY \uD83E\uDD2A",
                 "ei yo let me get a chop cheese", "new york accent challenge",
-                "cangrejo cangrejo cangrejo vitamina d", "*se sonroja*", "seen 13:37", "sale gc?", "como me gusta tu mama"};
+                "cangrejo cangrejo cangrejo vitamina d", "*se sonroja*", "seen 13:37", "sale gc?", "como me gusta tu mama",
+                "wish you were here", "sorry, i keep doing it wrong. :(", "i miss the feeling of you missing me", "we gave ourselves all we could.",
+                "toy triste :(", "toy chiquito :("};
         Random random = new Random();
         int randomId = random.nextInt(messages.length);
 
+        if (event.getMessage().getContentRaw().contains("$user")) return;
+        if (event.getAuthor().isBot()) return;
         event.getAuthor().openPrivateChannel().queue();
         event.getChannel().sendMessage(messages[randomId]).queue();
     }

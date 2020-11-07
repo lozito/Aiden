@@ -16,7 +16,12 @@ public class CalculateCommand extends ListenerAdapter {
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split(" ");
-        if (event.getMessage().getContentRaw().equalsIgnoreCase("!calculate")) {
+        if (event.getMessage().getContentRaw().equalsIgnoreCase("$calculate")) {
+            if (!event.getAuthor().getId().contains("256491425481359360")) {
+                event.getMessage().delete().queue();
+                event.getChannel().sendMessage("It doesn't work with you! :).").queue();
+                return;
+            }
             EmbedBuilder builder = new EmbedBuilder();
             builder.setAuthor("Aiden's Calculator", null, "https://vignette.wikia.nocookie.net/beyondtwosouls/images/4/41/Aiden.png/revision/latest/top-crop/width/360/height/450?cb=20140831005218");
             builder.setColor(Color.PINK);
