@@ -37,6 +37,7 @@ public class CalculateCommand extends ListenerAdapter {
 
     public void onGuildMessageReactionAdd(GuildMessageReactionAddEvent event) {
         String reaction = event.getReactionEmote().getName();
+        if (event.getUser().isBot()) return;
         switch (reaction) {
             case "➕": {
                 prompts.put(event.getUser().getIdLong(), System.currentTimeMillis());

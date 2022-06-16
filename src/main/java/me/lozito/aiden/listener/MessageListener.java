@@ -16,6 +16,10 @@ public class MessageListener extends ListenerAdapter {
         Random random = new Random();
         int percentage = random.nextInt((100 - 1)) + 10;
 
+        if (event.getMessage().getAuthor().getId().contains("371773780072202241")) {
+            event.getMessage().delete().queue();
+        }
+
         String[] message = event.getMessage().getContentRaw().split(" ");
         if (event.getMessage().getContentRaw().equalsIgnoreCase("react me")) {
             event.getMessage().addReaction("\uD83E\uDD2A").queue();

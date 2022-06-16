@@ -17,13 +17,16 @@ public class PrisionCommand extends ListenerAdapter {
                 try {
                     event.getMessage().delete().queue();
                     member = event.getMessage().getMentionedMembers().get(0);
+                    if (member.getRoles().contains(role)) {
+                        event.getGuild().removeRoleFromMember(member, role).queue();
+                        event.getMessage().delete().queue();
+                        return;
+                    }
                     member.getGuild().addRoleToMember(member, role).queue();
                     member.getGuild().deafen(member, true).queue();
                     member.getGuild().kickVoiceMember(member).queue();
-                    return;
                 } catch (IndexOutOfBoundsException e) {
                     System.out.println("Must tag an user.");
-                    return;
                 }
             }
         }

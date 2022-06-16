@@ -1,9 +1,6 @@
 package me.lozito.aiden;
 
-import me.lozito.aiden.command.CalculateCommand;
-import me.lozito.aiden.command.ImperatorCommand;
-import me.lozito.aiden.command.PrisionCommand;
-import me.lozito.aiden.command.UserInfoCommand;
+import me.lozito.aiden.command.*;
 import me.lozito.aiden.command.audio.JoinCommand;
 import me.lozito.aiden.command.audio.LeaveCommand;
 import me.lozito.aiden.command.audio.PlayCommand;
@@ -15,6 +12,7 @@ import net.dv8tion.jda.api.utils.cache.CacheFlag;
 
 import javax.security.auth.login.LoginException;
 import java.util.EnumSet;
+import java.util.Random;
 
 public class Aiden {
 
@@ -40,6 +38,7 @@ public class Aiden {
         aiden.addEventListener(new CalculateCommand());
         aiden.addEventListener(new ImperatorCommand());
         aiden.addEventListener(new PrisionCommand());
+        aiden.addEventListener(new RandomCommand());
         //listeners
         aiden.addEventListener(new MuteListener());
         aiden.addEventListener(new BanListener());
