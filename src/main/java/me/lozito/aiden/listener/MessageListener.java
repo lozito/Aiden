@@ -49,14 +49,7 @@ public class MessageListener extends ListenerAdapter {
     }
 
     public void onPrivateMessageReceived(PrivateMessageReceivedEvent event) {
-        String[] messages = {"que te pasa pelotudito", "como te va, todo bien?", "la concha bien puta de tu madre",
-                "perdon no entiendo mogolicos", "tu novia trola con mi pingo se ahoga", "hola", "que nombre de mierda " +
-                "que tenes", "oye we vamos por unas chelas", "i still miss you :(", "iban 2 " +
-                "mogolicos en una moto y uno eras vos", "ESTOY LOL JAJA CRAZY \uD83E\uDD2A",
-                "ei yo let me get a chop cheese", "new york accent challenge",
-                "cangrejo cangrejo cangrejo vitamina d", "*se sonroja*", "seen 13:37", "sale gc?", "como me gusta tu mama",
-                "wish you were here", "sorry, i keep doing it wrong. :(", "i miss the feeling of you missing me", "we gave ourselves all we could.",
-                "toy triste :(", "toy chiquito :("};
+        String[] messages = {"just testing", "2nd message", "seen 13:37", "el tiempo nada en las aguas del cosmo", "supuestamente estoy vivo, pero solo soy un bot"};
         Random random = new Random();
         int randomId = random.nextInt(messages.length);
 
