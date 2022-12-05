@@ -17,7 +17,7 @@ import java.util.Random;
 public class Aiden {
 
     public static void main(String[] args) throws LoginException, InterruptedException {
-        JDA aiden = JDABuilder.createDefault("NzQ1NjQzMDM0NDE0MTUzODkz.Xz0wMA.syPSPNr2Cc83Us_il-o-Yh8ZxQY")
+        JDA aiden = JDABuilder.createDefault("token")
                 //disabling cache to avoid nullpointerexceptions.
                 .disableCache(EnumSet.of(
                         CacheFlag.VOICE_STATE,
